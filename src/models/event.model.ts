@@ -1,5 +1,5 @@
-import { Table, Column, Model, DataType, Sequelize, CreatedAt, UpdatedAt } from 'sequelize-typescript';
-
+import { Table, Column, Model, DataType, Sequelize,HasMany, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import {WorkshopModel} from './index'
 @Table({ tableName: 'events' })
 
 export class EventModel extends Model{
@@ -18,14 +18,17 @@ export class EventModel extends Model{
 
     @Column({
         type: DataType.DATE,
-        defaultValue : Sequelize.literal("(now())")
+        defaultValue : Sequelize.literal("(utc_timestamp())")
     })
     start_at : Date;
 
     @Column({
         type: DataType.DATE,
-        defaultValue : Sequelize.literal("(now())")
+        defaultValue : Sequelize.literal("(utc_timestamp())")
     })
-    end_at : Date;
+    end_at: Date;
+    
+    @HasMany(() => WorkshopModel)
+    workshops:WorkshopModel[]
 
 }

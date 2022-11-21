@@ -30,7 +30,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule,NestFactoryOptions)
 
  // global prefix
-  app.setGlobalPrefix('bsapi')
+  app.setGlobalPrefix('api')
   
    expressBind(app, {locales: [ 'en' ] })
  
@@ -44,7 +44,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidateInputPipe());
 
   //use globally to check auth module from request header
-  app.useGlobalGuards(new AuthModuleGuard())
+  //app.useGlobalGuards(new AuthModuleGuard())
 
    //SwaggerModule not use for production...
    if(process.env.NODE_ENV != 'production') {

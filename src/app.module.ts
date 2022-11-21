@@ -6,7 +6,7 @@ import {LoggerMiddleware} from './middleware'
 import {interceptorProviders} from './helpers/interceptor'
 import { AuthModule } from './modules/auth/auth.module';
 import { ApifetchModule } from './modules/apifetch/apifetch.module';
-import { UserModule } from './modules/user/user.module'
+import { EveneManagementModule } from './modules/event management/eventManagement.module'
 
 
 @Module({
@@ -15,8 +15,7 @@ import { UserModule } from './modules/user/user.module'
     DatabaseModule,
     AuthModule,
     ApifetchModule,
-    UserModule
-  ],
+    EveneManagementModule],
   controllers: [
 
   ],
