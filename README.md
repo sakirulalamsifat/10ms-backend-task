@@ -9,7 +9,7 @@
 
 # api details 
 
-1. Event list (POST)
+1. Event list (POST http://localhost:5001/api/v1/eventList)
   -- req body 
     {
     "page":1,
@@ -56,7 +56,7 @@
             "current_page": 1
         }
 
-2. Event Details (POST)
+2. Event Details (POST http://localhost:5001/api/v1/eventDetails)
  
     --req body 
 
@@ -72,7 +72,7 @@
         "total_workshops": 1
        }
 
-3. Workshop list (POST)
+3. Workshop list (POST http://localhost:5001/api/v1/workshopList)
 
     -- req body 
       {
@@ -94,7 +94,7 @@
             }
         ]
 
-4. workshop details
+4. workshop details (POST http://localhost:5001/api/v1/workshopDetails)
 
     -- req body
       {
@@ -111,7 +111,7 @@
         "total_reservations": 4
     }
 
-5. workshop reservation 
+5. workshop reservation (POST http://localhost:5001/api/v1/workshopReservation)
 
   --req body
     {
