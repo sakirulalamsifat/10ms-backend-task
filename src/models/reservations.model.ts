@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType, Sequelize, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, Sequelize, ForeignKey, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import {WorkshopModel} from './index'
 
 @Table({ tableName: 'reservations' })
 
@@ -21,6 +22,7 @@ export class ReservationModel extends Model{
     })
     email: string;
 
+    @ForeignKey(() => WorkshopModel)
     @Column({
         type: DataType.INTEGER
     })

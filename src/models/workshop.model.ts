@@ -1,5 +1,5 @@
-import { Table, Column, Model, DataType,ForeignKey, Sequelize, CreatedAt, UpdatedAt } from 'sequelize-typescript';
-import {EventModel} from './index'
+import { Table, Column, Model, DataType,ForeignKey, Sequelize, CreatedAt, UpdatedAt, HasMany } from 'sequelize-typescript';
+import {EventModel, ReservationModel} from './index'
 @Table({ tableName: 'workshops' })
 
 export class WorkshopModel extends Model{
@@ -38,6 +38,9 @@ export class WorkshopModel extends Model{
         type: DataType.INTEGER
     })
     description: number;
+
+    @HasMany(() => ReservationModel)
+    reservations:ReservationModel[]
 
 
 }

@@ -8,21 +8,27 @@ export class EvenetManagementController {
     constructor(private eventManagementService: EventManagementService) {}
        
     @Post('/eventList')
-    async userCreate( @Body() reqbody : any ) {
+    async eventList( @Body() reqbody : any ) {
         const { page = 1, limit = 10 } = reqbody
         
         return await this.eventManagementService.eventList(limit, limit * (page - 1),page)
     }
 
     @Post('/eventDetails')
-    async userFind( @Body() reqbody : any ) {
+    async eventDetails( @Body() reqbody : any ) {
 
         return await this.eventManagementService.eventDetails(reqbody)
     }
 
-    @Post('/callstoreprocedure')
-    async callStoreProcedure( @Body() reqbody : any ) {
+    @Post('/workshopList')
+    async workshopList( @Body() reqbody : any ) {
 
-        return await this.eventManagementService.callStoreProcedure(reqbody.the_input_paramenter)
+        return await this.eventManagementService.workshopList(reqbody)
+    }
+
+    @Post('/workshopDetails')
+    async workshopDetails( @Body() reqbody : any ) {
+
+        return await this.eventManagementService.workshopDetails(reqbody)
     }
 }

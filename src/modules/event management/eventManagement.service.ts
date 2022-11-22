@@ -56,9 +56,41 @@ export class EventManagementService {
         return response
     }
 
-    async callStoreProcedure(the_input_paramenters_required: any) : Promise<any>{
+    async workshopList(req: any) : Promise<any>{
         
-       
+        const { event_id } = req
+        
+        const workshoplist = await this.events.findOne({
+            where:{id:event_id},
+            include: [{
+                model: WorkshopModel,
+                where:{start_at:{[Op.gt]: Sequelize.literal("(utc_timestamp())")}}
+            }]
+        })
+
+        return workshoplist
+    }
+
+
+    async workshopDetails(req: any) : Promise<any>{
+        
+        const { workshop_id } = req
+        
+        const workshopDetails = await this.workshops.findOne({
+            where:{id:workshop_id}
+        })
+
+        const reservationCount = await this.reservations.count({ where: { workshop_id } })
+        
+        const response = {
+            id: workshopDetails.id,
+            title: workshopDetails.title,
+            desctiption:workshopDetails.description,
+            start_at: workshopDetails.start_at,
+            end_at: workshopDetails.end_at,
+            total_reservations:reservationCount
+        }
+        return response
     }
 }
 
