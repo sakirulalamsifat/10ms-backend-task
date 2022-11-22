@@ -92,6 +92,29 @@ export class EventManagementService {
         }
         return response
     }
+
+    async workshopReservation(req: any) : Promise<any>{
+        
+        const { name,email,workshop_id } = req
+        
+        const reservation = await this.reservations.create({
+            name,
+            email,
+            workshop_id
+        })
+    
+        const workshop = await this.workshops.findOne({
+            where:{id:reservation.workshop_id}
+        })
+
+        const event = await this.events.findOne({
+            where:{id:workshop.event_id}
+        })
+
+        const response={reservation, workshop,event}
+  
+        return response
+    }
 }
 
 

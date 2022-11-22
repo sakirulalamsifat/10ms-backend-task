@@ -31,4 +31,10 @@ export class EvenetManagementController {
 
         return await this.eventManagementService.workshopDetails(reqbody)
     }
+
+    @Post('/workshopReservation')
+    async workshopReservation( @Body() reqbody : any ) {
+
+        return await this.eventManagementService.workshopReservation(reqbody)
+    }
 }
